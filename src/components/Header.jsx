@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 import logo from '../assets/logo.jpg'
 
 const links = [
@@ -7,7 +8,7 @@ const links = [
   { label: 'Contact', href: '/contact' },
   { label: 'Blog', href: '/blog' },
 ]
- 
+
 const SunIcon = () => (
   <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
     <circle cx="12" cy="12" r="4" />
@@ -27,7 +28,7 @@ const SearchIcon = () => (
     <path strokeLinecap="round" d="M21 21l-4.3-4.3" />
   </svg>
 )
-   
+
 export default function Header() {
   const [dark, setDark] = useState(() => {
     if (typeof window === 'undefined') return true
@@ -44,7 +45,6 @@ export default function Header() {
   useEffect(() => {
     document.documentElement.classList.toggle('dark', dark)
     localStorage.setItem('theme', dark ? 'dark' : 'light')
-    // 🔔 notify every other component on the page
     window.dispatchEvent(new Event('theme-change'))
   }, [dark])
 
@@ -81,19 +81,18 @@ export default function Header() {
     <>
       <header className={`sticky top-0 z-40 w-full border-b ${shell} shadow-[0_2px_20px_rgba(212,175,55,0.15)] transition-colors`}>
         <div className="mx-auto flex h-20 max-w-7xl items-center gap-4 px-4 sm:px-6 lg:px-8">
-          <a href="/" className="flex items-center gap-2.5">
+          <Link to="/" className="flex items-center gap-2.5">
             <img src={logo} alt="Logo" className="h-16 w-16 rounded-full border-2 border-[#D4AF37] object-cover" />
             <span className={`text-xl font-bold tracking-tight ${brandText}`}>
               Dan<span className="text-[#F5D76E]">Tech</span>
             </span>
-          </a>
-          <div className="locla name of this name of this name for class name if then but more thing for this locala thie name if this name if then but more thin"></div>
+          </Link>
 
           <nav className="ml-8 hidden items-center gap-1 lg:flex">
             {links.map((l) => (
-              <a
+              <Link
                 key={l.href}
-                href={l.href}
+                to={l.href}
                 onClick={() => setActive(l.href)}
                 className={`relative rounded-lg px-4 py-2 text-sm font-medium transition-colors
                   ${active === l.href ? navActive : navIdle}
@@ -101,7 +100,7 @@ export default function Header() {
                   ${active === l.href ? 'after:scale-x-100' : 'after:scale-x-0 hover:after:scale-x-100'}`}
               >
                 {l.label}
-              </a>
+              </Link>
             ))}
           </nav>
 
@@ -129,12 +128,12 @@ export default function Header() {
               {dark ? <SunIcon /> : <MoonIcon />}
             </button>
 
-            <a href="/login" className={`hidden rounded-lg border px-4 py-2 text-sm font-medium transition sm:block ${signIn}`}>
+            <Link to="/login" className={`hidden rounded-lg border px-4 py-2 text-sm font-medium transition sm:block ${signIn}`}>
               Sign in
-            </a>
-            <a href="/contact" className={`hidden rounded-lg px-4 py-2 text-sm font-semibold transition sm:block ${getStarted}`}>
+            </Link>
+            <Link to="/contact" className={`hidden rounded-lg px-4 py-2 text-sm font-semibold transition sm:block ${getStarted}`}>
               Get started
-            </a>
+            </Link>
 
             <button
               onClick={() => setMenuOpen(!menuOpen)}
@@ -189,9 +188,9 @@ export default function Header() {
 
         <nav className="flex flex-col gap-1 p-4">
           {links.map((l) => (
-            <a
+            <Link
               key={l.href}
-              href={l.href}
+              to={l.href}
               onClick={() => { setActive(l.href); setMenuOpen(false) }}
               className={`rounded-lg px-4 py-3 text-sm font-medium transition ${
                 active === l.href
@@ -200,17 +199,17 @@ export default function Header() {
               }`}
             >
               {l.label}
-            </a>
+            </Link>
           ))}
         </nav>
-   <div className="local name this name of this name is this name if this name for this name this name this this name if this name if then for this name id for personale get this name for then optional for they take but more think over it for learn "></div>
+
         <div className={`mt-auto p-4 border-t ${sidebarDivider} space-y-2`}>
-          <a href="/login" onClick={() => setMenuOpen(false)} className={`block w-full rounded-lg border py-2.5 text-center text-sm font-medium transition ${signIn}`}>
+          <Link to="/login" onClick={() => setMenuOpen(false)} className={`block w-full rounded-lg border py-2.5 text-center text-sm font-medium transition ${signIn}`}>
             Sign in
-          </a>
-          <a href="/contact" onClick={() => setMenuOpen(false)} className={`block w-full rounded-lg py-2.5 text-center text-sm font-semibold transition ${getStarted}`}>
+          </Link>
+          <Link to="/contact" onClick={() => setMenuOpen(false)} className={`block w-full rounded-lg py-2.5 text-center text-sm font-semibold transition ${getStarted}`}>
             Get started
-          </a>
+          </Link>
         </div>
       </aside>
     </>
