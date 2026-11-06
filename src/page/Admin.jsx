@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { io } from 'socket.io-client'
 
-const BaseUrl = 'http://localhost:5000'
+const BaseUrl = 'https://dantech-backend.onrender.com'
 
 const navItems = [
   {
