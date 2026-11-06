@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-const BaseUrl = 'http://localhost:5000' // Replace with your backend URL
+const BaseUrl = 'https://dantech-backend.onrender.com' // Replace with your backend URL
 // Replace with your own image in src/assets/
 import bgImage from '../assets/dan1.png'
 
