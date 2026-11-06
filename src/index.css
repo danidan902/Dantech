@@ -1,0 +1,66 @@
+body {
+  margin: 0;
+  padding: 0;
+  touch-action: manipulation;
+  position: relative;
+}
+
+/* ===== Scroll reveal keyframes ===== */
+@keyframes revealUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes revealDown {
+  from { opacity: 0; transform: translateY(-40px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes revealLeft {
+  from { opacity: 0; transform: translateX(-60px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes revealRight {
+  from { opacity: 0; transform: translateX(60px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes revealZoom {
+  from { opacity: 0; transform: scale(0.85); }
+  to   { opacity: 1; transform: scale(1); }
+}
+@keyframes revealRotate {
+  from { opacity: 0; transform: rotate(-3deg) translateY(30px); }
+  to   { opacity: 1; transform: rotate(0) translateY(0); }
+}
+@keyframes floatY {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+
+.reveal {
+  opacity: 0;
+  will-change: transform, opacity;
+}
+.reveal.is-visible.reveal-up     { animation: revealUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+.reveal.is-visible.reveal-down   { animation: revealDown 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+.reveal.is-visible.reveal-left   { animation: revealLeft 1s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+.reveal.is-visible.reveal-right  { animation: revealRight 1s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+.reveal.is-visible.reveal-zoom   { animation: revealZoom 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+.reveal.is-visible.reveal-rotate { animation: revealRotate 1s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+
+/* Floating element */
+.animate-float { animation: floatY 4s ease-in-out infinite; }
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1 !important; }
+  .reveal.is-visible.reveal-up,
+  .reveal.is-visible.reveal-down,
+  .reveal.is-visible.reveal-left,
+  .reveal.is-visible.reveal-right,
+  .reveal.is-visible.reveal-zoom,
+  .reveal.is-visible.reveal-rotate {
+    animation: none !important;
+  }
+  .animate-float { animation: none !important; }
+}
+
+@import "tailwindcss";
