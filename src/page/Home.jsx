@@ -12,7 +12,7 @@ import ctaImage from '../assets/add.png'
 import Footer from '../components/Footer'
 
 // Backend base URL (same as Admin.jsx)
-const BaseUrl = 'http://localhost:5000'
+const BaseUrl = 'https://dantech-backend.onrender.com'
 
 /* ============================================================
    SCROLL-REVEAL COMPONENT (inline)
