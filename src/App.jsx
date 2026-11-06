@@ -23,7 +23,6 @@ function AppLayout() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/blog" element={<Blog />} />
         <Route path="/login" element={<SignIn />} />
-        <Route path="/signin" element={<SignIn />} />
         <Route path="/admin" element={<Admin />} />
         <Route path="*" element={<Home />} />
         <Route path="/footer" element={<Footer/>} />
