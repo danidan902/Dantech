@@ -5,7 +5,7 @@ import contactImage from '../assets/dan1.png'
 import Footer from '../components/Footer'
 import { useTheme } from '../hooks/useTheme'
 
-const BaseUrl = 'http://localhost:5000'
+const BaseUrl = 'https://dantech-backend.onrender.com'
 
 const contactInfo = [
   {
